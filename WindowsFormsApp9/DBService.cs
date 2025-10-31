@@ -65,39 +65,102 @@ namespace WindowsFormsApp9
                 }
             }
         }
-        public List<Viewing> GetViewings()
+        public List<Client> GetAllClients()
         {
-            var viewings = new List<Viewing>();
+            var clients = new List<Client>();
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM Viewings";
+                string query = "SELECT * FROM Clients";
                 SqlCommand command = new SqlCommand(query, connection);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        viewings.Add(new Viewing()
+                        clients.Add(new Client()
                         {
-                            ViewingId = reader.GetInt32(0),
-                            PropertyId = reader.GetInt32(1),
-                            ClientId = reader.GetInt32(2),
-                            AgentId = reader.GetInt32(3),
-                            ScheduledDate = reader.GetDateTime(4),
-                            
+                            ClientId = reader.GetInt32(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            Phone = reader.GetString(3),
+                            ClientType = reader.GetString(4),
+
                         });
                     }
                 }
-                return viewings;
+                return clients;
             }
         }
+        public List<Agent> GetAllAgents()
+        {
+            var agents = new List<Agent>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Agents";
+                SqlCommand command = new SqlCommand(query, connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        agents.Add(new Agent()
+                        {
+                            AgentId = reader.GetInt32(0),
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            Phone = reader.GetString(3)
+                        });
+                    }
+                }
+            }
+            return agents;
+        }
+
+        public void AddViewing(Viewing viewing)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"INSERT INTO Viewings (PropertyId, ClientId, AgentId, ScheduledDate, ClientFeedback) VALUES (@PropertyId, @ClientId, @AgentId, @ScheduledDate, @ClientFeedback)";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PropertyId", viewing.PropertyId);
+                    command.Parameters.AddWithValue("@ClientId", viewing.ClientId);
+                    command.Parameters.AddWithValue("@AgentId", viewing.AgentId);
+                    command.Parameters.AddWithValue("@ScheduledDate", viewing.ScheduledDate);
+                    command.Parameters.AddWithValue("@ClientFeedback", viewing.ClientFeedback);
+                    command.ExecuteNonQuery();
+                }
+            } 
+        }
+        public List<Viewing> GetViewingsByProperty(int propertyId)
+            {
+                var viewings = new List<Viewing>();
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Viewings";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            viewings.Add(new Viewing()
+                            {
+                                ViewingId = reader.GetInt32(0),
+                                PropertyId = reader.GetInt32(1),
+                                ClientId = reader.GetInt32(2),
+                                AgentId = reader.GetInt32(3),
+                                ScheduledDate = reader.GetDateTime(4),
+                                ClientFeedback = reader.GetString(5)
+                            });
+                        }
+                    }
+                }
+            return viewings;
+        }   
+    
+                            
     }
 }
-
-
-
-
-
-
-
-        

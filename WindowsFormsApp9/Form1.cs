@@ -20,7 +20,6 @@ namespace WindowsFormsApp9
              dBService = new DBService("Data Source = Cab109,49172;" +
                 "Initial Catalog = Nedviga;" +
                 "Integrated Security = True");
-            List<Property> properties = dBService.GetAvailableProperties(); 
             dgvProperties.DataSource = dBService.GetAvailableProperties();
         }
 
@@ -60,6 +59,17 @@ namespace WindowsFormsApp9
             Form2 form2 = new Form2();
             form2.Show();
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dgvhistory.Visible = true ;
+        }
+
+        private void dgvProperties_SelectionChanged(object sender, EventArgs e)
+        {
+            var data = dgvProperties.CurrentRow.DataBoundItem;
+            dgvhistory.DataSource = dBService.GetViewingsByProperty(((Property)data).PropertyId);
         }
 
         
