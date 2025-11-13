@@ -16,13 +16,16 @@ namespace WindowsFormsApp9
         private readonly DBService dBService;
         private bool IsVisibleHistory = false;
         private bool IsVisibleAdd = false;
+
         public Form1()
         {
             InitializeComponent();
             button3.Text = "Показать историю \n просмотров";
-            dBService = new DBService("Data Source = Cab109,49172;" +
-                "Initial Catalog = Nedviga;" +
-                "Integrated Security = True");
+            dBService = new DBService(
+                "Data Source = Cab109,49172;"
+                    + "Initial Catalog = Nedviga;"
+                    + "Integrated Security = True"
+            );
             dgvProperties.DataSource = dBService.GetAvailableProperties();
             dgvProperties.Columns["PropertyId"].Visible = false;
         }
@@ -40,7 +43,7 @@ namespace WindowsFormsApp9
             {
                 btnadd.Text = "Добавить объект ";
                 IsVisibleAdd = true;
-            }  
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -52,7 +55,6 @@ namespace WindowsFormsApp9
                 decimal Price = Convert.ToDecimal(txtPrice.Text);
                 decimal Area = Convert.ToDecimal(txtArea.Text);
                 bool Available = chkIsAvailable.Checked;
-
 
                 var newProperties = new Property()
                 {
@@ -77,14 +79,12 @@ namespace WindowsFormsApp9
                 panel.Visible = false;
                 dgvhistory.Location = new Point(2, 244);
             }
-            
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2();
             form2.Show();
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -105,11 +105,12 @@ namespace WindowsFormsApp9
         private void dgvProperties_SelectionChanged(object sender, EventArgs e)
         {
             var data = dgvProperties.CurrentRow.DataBoundItem;
-            dgvhistory.DataSource = dBService.GetViewingsByProperty(((Property)data).PropertyId).Tables[0];
+            dgvhistory.DataSource = dBService
+                .GetViewingsByProperty(((Property)data).PropertyId)
+                .Tables[0];
             dgvhistory.Columns["ViewingId"].Visible = false;
-
         }
 
-       
+        // ваня спич срочно нужен калькулятор
     }
 }

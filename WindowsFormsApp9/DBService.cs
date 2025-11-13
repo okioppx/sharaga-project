@@ -17,10 +17,12 @@ namespace WindowsFormsApp9
     public class DBService
     {
         private readonly string connectionString;
+
         public DBService(string _connectionString)
         {
             connectionString = _connectionString;
         }
+
         public List<Property> GetAvailableProperties()
         {
             var properties = new List<Property>();
@@ -30,30 +32,33 @@ namespace WindowsFormsApp9
                 string query = "SELECT * FROM Properties";
                 SqlCommand command = new SqlCommand(query, connection);
                 using (var reader = command.ExecuteReader())
-
                 {
                     while (reader.Read())
                     {
-                        properties.Add(new Property()
-                        {
-                            PropertyId = reader.GetInt32(0),
-                            Address = reader.GetString(1),
-                            Type = reader.GetString(2),
-                            Price = reader.GetDecimal(3),
-                            Area = reader.GetDecimal(4),
-                            IsAvailable = reader.GetBoolean(5)
-                        });
+                        properties.Add(
+                            new Property()
+                            {
+                                PropertyId = reader.GetInt32(0),
+                                Address = reader.GetString(1),
+                                Type = reader.GetString(2),
+                                Price = reader.GetDecimal(3),
+                                Area = reader.GetDecimal(4),
+                                IsAvailable = reader.GetBoolean(5),
+                            }
+                        );
                     }
                 }
                 return properties;
             }
         }
+
         public void AddProperty(Property property)
         {
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = @"INSERT INTO Properties (Address, Type, Price, Area, IsAvailable) VALUES (@Address, @Type, @Price, @Area, @IsAvailable)";
+                string query =
+                    @"INSERT INTO Properties (Address, Type, Price, Area, IsAvailable) VALUES (@Address, @Type, @Price, @Area, @IsAvailable)";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -66,6 +71,7 @@ namespace WindowsFormsApp9
                 }
             }
         }
+
         public List<Client> GetAllClients()
         {
             var clients = new List<Client>();
@@ -78,20 +84,22 @@ namespace WindowsFormsApp9
                 {
                     while (reader.Read())
                     {
-                        clients.Add(new Client()
-                        {
-                            ClientId = reader.GetInt32(0),
-                            FirstName = reader.GetString(1),
-                            LastName = reader.GetString(2),
-                            Phone = reader.GetString(3),
-                            ClientType = reader.GetString(4),
-
-                        });
+                        clients.Add(
+                            new Client()
+                            {
+                                ClientId = reader.GetInt32(0),
+                                FirstName = reader.GetString(1),
+                                LastName = reader.GetString(2),
+                                Phone = reader.GetString(3),
+                                ClientType = reader.GetString(4),
+                            }
+                        );
                     }
                 }
                 return clients;
             }
         }
+
         public List<Agent> GetAllAgents()
         {
             var agents = new List<Agent>();
@@ -104,13 +112,15 @@ namespace WindowsFormsApp9
                 {
                     while (reader.Read())
                     {
-                        agents.Add(new Agent()
-                        {
-                            AgentId = reader.GetInt32(0),
-                            FirstName = reader.GetString(1),
-                            LastName = reader.GetString(2),
-                            Phone = reader.GetString(3)
-                        });
+                        agents.Add(
+                            new Agent()
+                            {
+                                AgentId = reader.GetInt32(0),
+                                FirstName = reader.GetString(1),
+                                LastName = reader.GetString(2),
+                                Phone = reader.GetString(3),
+                            }
+                        );
                     }
                 }
             }
@@ -122,7 +132,8 @@ namespace WindowsFormsApp9
             using (var connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = @"INSERT INTO Viewings (PropertyId, ClientId, AgentId, ScheduledDate, ClientFeedback) VALUES (@PropertyId, @ClientId, @AgentId, @ScheduledDate, @ClientFeedback)";
+                string query =
+                    @"INSERT INTO Viewings (PropertyId, ClientId, AgentId, ScheduledDate, ClientFeedback) VALUES (@PropertyId, @ClientId, @AgentId, @ScheduledDate, @ClientFeedback)";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -133,51 +144,53 @@ namespace WindowsFormsApp9
                     command.Parameters.AddWithValue("@ClientFeedback", viewing.ClientFeedback);
                     command.ExecuteNonQuery();
                 }
-            } 
+            }
         }
-        public DataSet GetViewingsByProperty(int propertyId)
-            {
-                DataSet ds = new DataSet();
-                var viewings = new List<Viewing>();
-                using (var connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string query = "SELECT v.ViewingId," +
-                    "p.Address,      a.FirstName + ' ' + a.LastName AS ИмяАгента," +
-                    "cl.FirstName + ' ' + cl.LastName AS ИмяКлиента," +
-                    "v.ScheduledDate AS ДатаПросмотра," +
-                    "v.ClientFeedback AS ОбратнаяСвязьОтКлиента " +
-                    "FROM Viewings v " +
-                    "JOIN Properties p ON v.PropertyId = p.PropertyId " +
-                    "JOIN Agents a ON v.AgentId = a.AgentId " +
-                    "JOIN Clients cl ON v.ClientId = cl.ClientId " +
-                    "WHERE p.PropertyId = @propertyId";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    SqlParameter parameter = new SqlParameter("@propertyId", propertyId);
-                    command.Parameters.Add(parameter);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    ds = new DataSet();
-                    adapter.Fill(ds);
-                    //using (var reader = command.ExecuteReader())
-                    //{
-                    //    while (reader.Read())
-                    //    {
-                    //        viewings.Add(new Viewing()
-                    //        {
-                    //            ViewingId = reader.GetInt32(0),
-                    //            PropertyId = reader.GetString(1),
-                    //            ClientId = reader.GetInt32(2),
-                    //            AgentId = reader.GetInt32(3),
-                    //            ScheduledDate = reader.GetDateTime(4),
-                    //            ClientFeedback = reader.GetString(5)
-                    //        });
-                    //    }
-                    //}
-                }
+        public DataSet GetViewingsByProperty(int propertyId)
+        {
+            DataSet ds = new DataSet();
+            var viewings = new List<Viewing>();
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query =
+                    "SELECT v.ViewingId,"
+                    + "p.Address,      a.FirstName + ' ' + a.LastName AS ИмяАгента,"
+                    + "cl.FirstName + ' ' + cl.LastName AS ИмяКлиента,"
+                    + "v.ScheduledDate AS ДатаПросмотра,"
+                    + "v.ClientFeedback AS ОбратнаяСвязьОтКлиента "
+                    + "FROM Viewings v "
+                    + "JOIN Properties p ON v.PropertyId = p.PropertyId "
+                    + "JOIN Agents a ON v.AgentId = a.AgentId "
+                    + "JOIN Clients cl ON v.ClientId = cl.ClientId "
+                    + "WHERE p.PropertyId = @propertyId";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlParameter parameter = new SqlParameter("@propertyId", propertyId);
+                command.Parameters.Add(parameter);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                //using (var reader = command.ExecuteReader())
+                //{
+                //    while (reader.Read())
+                //    {
+                //        viewings.Add(new Viewing()
+                //        {
+                //            ViewingId = reader.GetInt32(0),
+                //            PropertyId = reader.GetString(1),
+                //            ClientId = reader.GetInt32(2),
+                //            AgentId = reader.GetInt32(3),
+                //            ScheduledDate = reader.GetDateTime(4),
+                //            ClientFeedback = reader.GetString(5)
+                //        });
+                //    }
+                //}
+            }
             return ds;
-        }   
-    
-                            
+        }
+
+        //dsfgsdfgsdfgsdfgsdfg
     }
 }
