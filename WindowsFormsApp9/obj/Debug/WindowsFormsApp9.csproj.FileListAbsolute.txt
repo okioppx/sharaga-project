@@ -32,3 +32,15 @@ C:\Users\User109-7\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\Window
 C:\Users\User109-7\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.exe
 C:\Users\User109-7\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.pdb
 C:\Users\User109-7\Source\Repos\energy-project\WindowsFormsApp9\bin\Debug\6676653.ico
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\bin\Debug\6676653.ico
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\bin\Debug\WindowsFormsApp9.exe.config
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\bin\Debug\WindowsFormsApp9.exe
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\bin\Debug\WindowsFormsApp9.pdb
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.csproj.AssemblyReference.cache
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.Form1.resources
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.Form2.resources
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.Properties.Resources.resources
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.csproj.GenerateResource.cache
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.csproj.CoreCompileInputs.cache
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.exe
+C:\Users\user109-1\Source\Repos\energy-project\WindowsFormsApp9\obj\Debug\WindowsFormsApp9.pdb
