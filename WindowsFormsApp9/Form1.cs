@@ -69,9 +69,14 @@ namespace WindowsFormsApp9
         private void dgvProperties_SelectionChanged(object sender, EventArgs e)
         {
             var data = dgvProperties.CurrentRow.DataBoundItem;
-            dgvhistory.DataSource = dBService.GetViewingsByProperty(((Property)data).PropertyId);
+            dgvhistory.DataSource = dBService.GetViewingsByProperty(((Property)data).PropertyId).Tables[0];
+            
+
         }
 
-        
+        private void dgvhistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

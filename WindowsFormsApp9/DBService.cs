@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Diagnostics;
@@ -134,31 +135,47 @@ namespace WindowsFormsApp9
                 }
             } 
         }
-        public List<Viewing> GetViewingsByProperty(int propertyId)
+        public DataSet GetViewingsByProperty(int propertyId)
             {
+                DataSet ds = new DataSet();
                 var viewings = new List<Viewing>();
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Viewings";
+                    string query = "SELECT v.ViewingId," +
+                    "p.Address,      a.FirstName + ' ' + a.LastName AS ИмяАгента," +
+                    "cl.FirstName + ' ' + cl.LastName AS ИмяКлиента," +
+                    "v.ScheduledDate AS ДатаПросмотра," +
+                    "v.ClientFeedback AS ОбратнаяСвязьОтКлиента " +
+                    "FROM Viewings v " +
+                    "JOIN Properties p ON v.PropertyId = p.PropertyId " +
+                    "JOIN Agents a ON v.AgentId = a.AgentId " +
+                    "JOIN Clients cl ON v.ClientId = cl.ClientId " +
+                    "WHERE p.PropertyId = @propertyId";
                     SqlCommand command = new SqlCommand(query, connection);
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            viewings.Add(new Viewing()
-                            {
-                                ViewingId = reader.GetInt32(0),
-                                PropertyId = reader.GetInt32(1),
-                                ClientId = reader.GetInt32(2),
-                                AgentId = reader.GetInt32(3),
-                                ScheduledDate = reader.GetDateTime(4),
-                                ClientFeedback = reader.GetString(5)
-                            });
-                        }
-                    }
+                    SqlParameter parameter = new SqlParameter("@propertyId", propertyId);
+                    command.Parameters.Add(parameter);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    ds = new DataSet();
+                    adapter.Fill(ds);
+                    //using (var reader = command.ExecuteReader())
+                    //{
+                    //    while (reader.Read())
+                    //    {
+                    //        viewings.Add(new Viewing()
+                    //        {
+                    //            ViewingId = reader.GetInt32(0),
+                    //            PropertyId = reader.GetString(1),
+                    //            ClientId = reader.GetInt32(2),
+                    //            AgentId = reader.GetInt32(3),
+                    //            ScheduledDate = reader.GetDateTime(4),
+                    //            ClientFeedback = reader.GetString(5)
+                    //        });
+                    //    }
+                    //}
                 }
-            return viewings;
+            return ds;
         }   
     
                             

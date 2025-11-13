@@ -33,6 +33,10 @@
             this.btnSchedule = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkIsAvailable = new System.Windows.Forms.CheckBox();
             this.txtArea = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -40,10 +44,6 @@
             this.txtType = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.dgvhistory = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProperties)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhistory)).BeginInit();
@@ -59,15 +59,14 @@
             this.dgvProperties.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProperties.Size = new System.Drawing.Size(615, 207);
             this.dgvProperties.TabIndex = 0;
-            //this.dgvProperties.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProperties_RowEnter);
             this.dgvProperties.SelectionChanged += new System.EventHandler(this.dgvProperties_SelectionChanged);
             // 
             // btnadd
             // 
             this.btnadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnadd.Location = new System.Drawing.Point(637, 31);
+            this.btnadd.Location = new System.Drawing.Point(636, 31);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(151, 75);
+            this.btnadd.Size = new System.Drawing.Size(279, 52);
             this.btnadd.TabIndex = 1;
             this.btnadd.Text = "Добавить объект";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -76,9 +75,9 @@
             // btnSchedule
             // 
             this.btnSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSchedule.Location = new System.Drawing.Point(637, 163);
+            this.btnSchedule.Location = new System.Drawing.Point(636, 186);
             this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(151, 75);
+            this.btnSchedule.Size = new System.Drawing.Size(279, 52);
             this.btnSchedule.TabIndex = 2;
             this.btnSchedule.Text = "Запланировать просмотр";
             this.btnSchedule.UseVisualStyleBackColor = true;
@@ -87,9 +86,9 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(637, 327);
+            this.button3.Location = new System.Drawing.Point(636, 110);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(151, 75);
+            this.button3.Size = new System.Drawing.Size(279, 52);
             this.button3.TabIndex = 3;
             this.button3.Text = "Показать историю просмтров";
             this.button3.UseVisualStyleBackColor = true;
@@ -112,6 +111,42 @@
             this.panel.Size = new System.Drawing.Size(267, 174);
             this.panel.TabIndex = 4;
             this.panel.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(180, 95);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Площадь";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(180, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Цена";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(180, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Тип";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(180, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Адрес";
             // 
             // chkIsAvailable
             // 
@@ -164,53 +199,18 @@
             // dgvhistory
             // 
             this.dgvhistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvhistory.Location = new System.Drawing.Point(309, 264);
+            this.dgvhistory.Location = new System.Drawing.Point(286, 264);
             this.dgvhistory.Name = "dgvhistory";
-            this.dgvhistory.Size = new System.Drawing.Size(308, 171);
+            this.dgvhistory.Size = new System.Drawing.Size(642, 171);
             this.dgvhistory.TabIndex = 5;
             this.dgvhistory.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(180, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Адрес";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Тип";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(180, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Цена";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(180, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Площадь";
+            this.dgvhistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvhistory_CellContentClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(927, 450);
             this.Controls.Add(this.dgvhistory);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.button3);
