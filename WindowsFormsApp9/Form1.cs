@@ -15,19 +15,32 @@ namespace WindowsFormsApp9
     {
         private readonly DBService dBService;
         private bool IsVisibleHistory = false;
+        private bool IsVisibleAdd = false;
         public Form1()
         {
             InitializeComponent();
-             dBService = new DBService("Data Source = Cab109,49172;" +
+            button3.Text = "Показать историю \n просмотров";
+            dBService = new DBService("Data Source = Cab109,49172;" +
                 "Initial Catalog = Nedviga;" +
                 "Integrated Security = True");
             dgvProperties.DataSource = dBService.GetAvailableProperties();
+            dgvProperties.Columns["PropertyId"].Visible = false;
         }
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            panel.Visible = true;
+            panel.Visible = IsVisibleAdd;
             dgvhistory.Location = new Point(298, 244);
+            if (IsVisibleAdd)
+            {
+                btnadd.Text = "Скрыть добавление \n объекта";
+                IsVisibleAdd = false;
+            }
+            else
+            {
+                btnadd.Text = "Добавить объект ";
+                IsVisibleAdd = true;
+            }  
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,12 +91,12 @@ namespace WindowsFormsApp9
         {
             if (IsVisibleHistory)
             {
-                button3.Text = "Скрыть историю просмотров";
+                button3.Text = "Показать историю просмотров";
                 IsVisibleHistory = false;
             }
             else
             {
-                button3.Text = "Показать историю просмотров";
+                button3.Text = "Скрыть историю \n просмотров";
                 IsVisibleHistory = true;
             }
             dgvhistory.Visible = IsVisibleHistory;
@@ -96,8 +109,6 @@ namespace WindowsFormsApp9
             dgvhistory.Columns["ViewingId"].Visible = false;
 
         }
-
-       
 
        
     }

@@ -40,8 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkIsAvailable = new System.Windows.Forms.CheckBox();
             this.txtArea = new System.Windows.Forms.TextBox();
-            this.txtPrice = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.dgvhistory = new System.Windows.Forms.DataGridView();
@@ -52,6 +52,12 @@
             // 
             // dgvProperties
             // 
+            this.dgvProperties.AllowUserToAddRows = false;
+            this.dgvProperties.AllowUserToDeleteRows = false;
+            this.dgvProperties.AllowUserToOrderColumns = true;
+            this.dgvProperties.AllowUserToResizeColumns = false;
+            this.dgvProperties.AllowUserToResizeRows = false;
+            this.dgvProperties.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProperties.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.dgvProperties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProperties.GridColor = System.Drawing.Color.AntiqueWhite;
@@ -96,7 +102,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(279, 52);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Показать историю просмтров";
+            this.button3.Text = "Показать историю  просмтров";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -108,8 +114,8 @@
             this.panel.Controls.Add(this.label1);
             this.panel.Controls.Add(this.chkIsAvailable);
             this.panel.Controls.Add(this.txtArea);
-            this.panel.Controls.Add(this.txtPrice);
             this.panel.Controls.Add(this.button1);
+            this.panel.Controls.Add(this.txtPrice);
             this.panel.Controls.Add(this.txtType);
             this.panel.Controls.Add(this.txtAddress);
             this.panel.Location = new System.Drawing.Point(13, 264);
@@ -171,22 +177,23 @@
             this.txtArea.Size = new System.Drawing.Size(159, 20);
             this.txtArea.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button1.Location = new System.Drawing.Point(177, 116);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 55);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Добавить";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(15, 64);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(159, 20);
             this.txtPrice.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(177, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 55);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtType
             // 
@@ -204,7 +211,11 @@
             // 
             // dgvhistory
             // 
-            this.dgvhistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvhistory.AllowUserToAddRows = false;
+            this.dgvhistory.AllowUserToDeleteRows = false;
+            this.dgvhistory.AllowUserToResizeColumns = false;
+            this.dgvhistory.AllowUserToResizeRows = false;
+            this.dgvhistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvhistory.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.dgvhistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvhistory.GridColor = System.Drawing.Color.AntiqueWhite;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.cmbaddress = new System.Windows.Forms.ComboBox();
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
@@ -41,8 +42,9 @@
             // 
             // cmbaddress
             // 
+            this.cmbaddress.BackColor = System.Drawing.Color.AntiqueWhite;
             this.cmbaddress.FormattingEnabled = true;
-            this.cmbaddress.Location = new System.Drawing.Point(23, 67);
+            this.cmbaddress.Location = new System.Drawing.Point(135, 16);
             this.cmbaddress.Name = "cmbaddress";
             this.cmbaddress.Size = new System.Drawing.Size(213, 21);
             this.cmbaddress.TabIndex = 0;
@@ -50,42 +52,46 @@
             // 
             // dtp
             // 
-            this.dtp.Location = new System.Drawing.Point(23, 244);
+            this.dtp.Location = new System.Drawing.Point(135, 193);
             this.dtp.Name = "dtp";
             this.dtp.Size = new System.Drawing.Size(213, 20);
             this.dtp.TabIndex = 1;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(563, 67);
+            this.btnSave.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.btnSave.Location = new System.Drawing.Point(245, 298);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(103, 21);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Записаться";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(563, 244);
+            this.button2.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.button2.Location = new System.Drawing.Point(103, 298);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 20);
             this.button2.TabIndex = 3;
             this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // cmbagent
             // 
+            this.cmbagent.BackColor = System.Drawing.Color.AntiqueWhite;
             this.cmbagent.FormattingEnabled = true;
-            this.cmbagent.Location = new System.Drawing.Point(23, 128);
+            this.cmbagent.Location = new System.Drawing.Point(135, 77);
             this.cmbagent.Name = "cmbagent";
             this.cmbagent.Size = new System.Drawing.Size(213, 21);
             this.cmbagent.TabIndex = 4;
             // 
             // cmbclient
             // 
+            this.cmbclient.BackColor = System.Drawing.Color.AntiqueWhite;
             this.cmbclient.FormattingEnabled = true;
-            this.cmbclient.Location = new System.Drawing.Point(23, 179);
+            this.cmbclient.Location = new System.Drawing.Point(135, 128);
             this.cmbclient.Name = "cmbclient";
             this.cmbclient.Size = new System.Drawing.Size(213, 21);
             this.cmbclient.TabIndex = 5;
@@ -93,7 +99,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(242, 71);
+            this.label1.Location = new System.Drawing.Point(70, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 6;
@@ -102,7 +108,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 131);
+            this.label2.Location = new System.Drawing.Point(70, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 7;
@@ -112,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(242, 187);
+            this.label3.Location = new System.Drawing.Point(70, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 8;
@@ -122,7 +128,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.Bisque;
+            this.ClientSize = new System.Drawing.Size(432, 392);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -132,6 +139,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dtp);
             this.Controls.Add(this.cmbaddress);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Form2";
             this.ResumeLayout(false);
