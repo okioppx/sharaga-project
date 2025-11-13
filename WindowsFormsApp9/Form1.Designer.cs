@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dgvProperties = new System.Windows.Forms.DataGridView();
             this.btnadd = new System.Windows.Forms.Button();
             this.btnSchedule = new System.Windows.Forms.Button();
@@ -51,7 +52,9 @@
             // 
             // dgvProperties
             // 
+            this.dgvProperties.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.dgvProperties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProperties.GridColor = System.Drawing.Color.AntiqueWhite;
             this.dgvProperties.Location = new System.Drawing.Point(2, 31);
             this.dgvProperties.MultiSelect = false;
             this.dgvProperties.Name = "dgvProperties";
@@ -63,35 +66,38 @@
             // 
             // btnadd
             // 
+            this.btnadd.BackColor = System.Drawing.Color.AntiqueWhite;
             this.btnadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnadd.Location = new System.Drawing.Point(636, 31);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(279, 52);
             this.btnadd.TabIndex = 1;
             this.btnadd.Text = "Добавить объект";
-            this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.UseVisualStyleBackColor = false;
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
             // btnSchedule
             // 
+            this.btnSchedule.BackColor = System.Drawing.Color.AntiqueWhite;
             this.btnSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnSchedule.Location = new System.Drawing.Point(636, 186);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(279, 52);
             this.btnSchedule.TabIndex = 2;
             this.btnSchedule.Text = "Запланировать просмотр";
-            this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.UseVisualStyleBackColor = false;
             this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.AntiqueWhite;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(636, 110);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(279, 52);
             this.button3.TabIndex = 3;
             this.button3.Text = "Показать историю просмтров";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel
@@ -198,18 +204,23 @@
             // 
             // dgvhistory
             // 
+            this.dgvhistory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvhistory.BackgroundColor = System.Drawing.Color.AntiqueWhite;
             this.dgvhistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvhistory.Location = new System.Drawing.Point(286, 264);
+            this.dgvhistory.GridColor = System.Drawing.Color.AntiqueWhite;
+            this.dgvhistory.Location = new System.Drawing.Point(2, 244);
             this.dgvhistory.Name = "dgvhistory";
-            this.dgvhistory.Size = new System.Drawing.Size(642, 171);
+            this.dgvhistory.Size = new System.Drawing.Size(615, 194);
             this.dgvhistory.TabIndex = 5;
             this.dgvhistory.Visible = false;
-            this.dgvhistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvhistory_CellContentClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(927, 450);
             this.Controls.Add(this.dgvhistory);
             this.Controls.Add(this.panel);
@@ -217,8 +228,12 @@
             this.Controls.Add(this.btnSchedule);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.dgvProperties);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Дом под ключ";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProperties)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();

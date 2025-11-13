@@ -14,6 +14,7 @@ namespace WindowsFormsApp9
     public partial class Form1 : Form
     {
         private readonly DBService dBService;
+        private bool IsVisibleHistory = false;
         public Form1()
         {
             InitializeComponent();
@@ -26,32 +27,44 @@ namespace WindowsFormsApp9
         private void btnadd_Click(object sender, EventArgs e)
         {
             panel.Visible = true;
+            dgvhistory.Location = new Point(298, 244);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Address = txtAddress.Text;
-            string Type = txtType.Text;
-            decimal Price = Convert.ToDecimal(txtPrice.Text);
-            decimal Area = Convert.ToDecimal(txtArea.Text);
-            bool Available = chkIsAvailable.Checked;
-           
-            
-            var newProperties = new Property()
+            try
             {
-                PropertyId = 0,
-                Address = Address,
-                Type = Type,
-                Price = Price,
-                Area = Area,
-                IsAvailable = Available,
-            };
-            List<Property> properties = new List<Property>();
-            dBService.AddProperty(newProperties);
-            properties = dBService.GetAvailableProperties();
+                string Address = txtAddress.Text;
+                string Type = txtType.Text;
+                decimal Price = Convert.ToDecimal(txtPrice.Text);
+                decimal Area = Convert.ToDecimal(txtArea.Text);
+                bool Available = chkIsAvailable.Checked;
+
+
+                var newProperties = new Property()
+                {
+                    PropertyId = 0,
+                    Address = Address,
+                    Type = Type,
+                    Price = Price,
+                    Area = Area,
+                    IsAvailable = Available,
+                };
+                List<Property> properties = new List<Property>();
+                dBService.AddProperty(newProperties);
+                properties = dBService.GetAvailableProperties();
+
+                dgvProperties.DataSource = properties;
+                panel.Visible = false;
+                dgvhistory.Location = new Point(2, 244);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Сбой", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                panel.Visible = false;
+                dgvhistory.Location = new Point(2, 244);
+            }
             
-            dgvProperties.DataSource = properties;
-            panel.Visible = false;
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
@@ -63,20 +76,29 @@ namespace WindowsFormsApp9
 
         private void button3_Click(object sender, EventArgs e)
         {
-            dgvhistory.Visible = true ;
+            if (IsVisibleHistory)
+            {
+                button3.Text = "Скрыть историю просмотров";
+                IsVisibleHistory = false;
+            }
+            else
+            {
+                button3.Text = "Показать историю просмотров";
+                IsVisibleHistory = true;
+            }
+            dgvhistory.Visible = IsVisibleHistory;
         }
 
         private void dgvProperties_SelectionChanged(object sender, EventArgs e)
         {
             var data = dgvProperties.CurrentRow.DataBoundItem;
             dgvhistory.DataSource = dBService.GetViewingsByProperty(((Property)data).PropertyId).Tables[0];
-            
+            dgvhistory.Columns["ViewingId"].Visible = false;
 
         }
 
-        private void dgvhistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+       
 
-        }
+       
     }
 }
